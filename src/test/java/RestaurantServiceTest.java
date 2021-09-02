@@ -50,5 +50,30 @@ class RestaurantServiceTest {
         assertEquals(initialNumberOfRestaurants + 1,service.getRestaurants().size());
     }
 
+    @Test
+    public void show_total_of_order_when_list_is_greater_than_1(){
+        List<String> cartItems = new ArrayList<String>();        ;
+        cartItems.add("Vegetable lasagne");
+        cartItems.add("Sweet corn soup");
+        int totalAmount = service.orderTotalFromCart(cartItems,restaurant);
+        assertEquals(388,totalAmount);
+    }
+
+    @Test
+    public void show_rate_of_selected_item_when_list_is_equal_than_1(){
+        List<String> items = new ArrayList<String>();
+        items.add("Vegetable lasagne");
+        int result = service.orderTotalFromCart(items, restaurant);
+        assertEquals(269,result);
+    }
+
+    @Test
+    public void show_total_when_no_item_selected_should_return_0() {
+        List<String> items = new ArrayList<String>();
+        int result = service.orderTotalFromCart(items, restaurant);
+        assertEquals(0,result);
+    }
+
+
 
 }

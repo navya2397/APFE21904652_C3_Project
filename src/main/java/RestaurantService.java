@@ -30,4 +30,8 @@ public class RestaurantService {
         return restaurants;
     }
 
+    public int orderTotalFromCart(List<String> items, Restaurant restaurant){
+        return 0;
+    }
+
 }
