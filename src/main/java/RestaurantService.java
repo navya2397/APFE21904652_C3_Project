@@ -30,8 +30,17 @@ public class RestaurantService {
         return restaurants;
     }
 
-    public int orderTotalFromCart(List<String> items, Restaurant restaurant){
-        return 0;
+    public int orderTotalFromCart(List<String> items,Restaurant restaurant){
+        int total = 0;
+        List<Item> menuItems = restaurant.getMenu();
+        for(String itemName : items){
+            for(Item menuItem : menuItems){
+                if(itemName.equals(menuItem.getName())){
+                    total += menuItem.getPrice();
+                }
+            }
+        }
+        return total;
     }
 
 }
